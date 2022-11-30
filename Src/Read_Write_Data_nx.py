@@ -1,9 +1,8 @@
 import argparse
 from collections import deque, defaultdict
 import os
-from re import I
 """ Our code """
-#from LS1 import LocalSearch1
+from LS_SA import SimulatedAnnealing
 import networkx as nx
 
 def ReadFile(args):
@@ -20,13 +19,8 @@ def ReadFile(args):
                 if i != '\n':
                     if '\n' in i:
                         i = i.replace('\n', '')
-                    for node2 in i:
-                        node2 = int(node2)
-                        if node2 > node1:
-                            graph.add_edge(node1, node2)
+                    graph.add_edge(node1, int(i))
             node1 += 1
-    print(graph)
-    print(graph.edges)
     return graph
 
 
@@ -89,7 +83,7 @@ if __name__ == "__main__":
         pass
     elif args.algorithm == "LS1":
         filename += '_' + str(args.seed)
-        num_best_solution, trace = LocalSearch1(graph, vertices, num_edge, args.time, args.seed)
+        num_best_solution, trace = SimulatedAnnealing(graph, args.time, args.seed)
         WriteFile(dictName, filename, num_best_solution, trace)
     elif args.algorithm == "LS2":
         filename += '_' + str(args.seed)
