@@ -30,7 +30,13 @@ def WriteFile(dictName, filename, num_of_best_solution, trace):
     # print(sol_filename)
     with open(sol_filename, 'w') as file:
         file.write(str(len(num_of_best_solution)) + '\n')
-        file.write(str(num_of_best_solution)[1:-1])
+        #file.write(str(num_of_best_solution)[1:-1])
+        for v in num_of_best_solution:
+            file.write(str(v))
+            file.write(',')
+        file.seek(0, 2)  # end of file
+        size = file.tell()  # the size...
+        file.truncate(size - 1)  # truncate at that size - how ever many characters
     file.close()
     with open(trace_filename, 'w') as file:
         for i in trace:
