@@ -1,5 +1,4 @@
 import argparse
-from collections import deque, defaultdict
 import os
 """ Our code """
 from LS_SA import SimulatedAnnealing
@@ -27,7 +26,6 @@ def ReadFile(args):
 def WriteFile(dictName, filename, num_of_best_solution, trace):
     sol_filename = dictName + filename + '.sol'
     trace_filename = dictName + filename + '.trace'
-    # print(sol_filename)
     with open(sol_filename, 'w') as file:
         file.write(str(len(num_of_best_solution)) + '\n')
         #file.write(str(num_of_best_solution)[1:-1])
@@ -42,6 +40,7 @@ def WriteFile(dictName, filename, num_of_best_solution, trace):
         for i in trace:
             file.write(i + '\n')
     file.close()
+    print("DONE")
 
 
 if __name__ == "__main__":
@@ -72,13 +71,14 @@ if __name__ == "__main__":
     filename = filename + '_' + args.algorithm + '_' + str(args.time)   # Only local search need random seed
                                                                         # + '_' + str(args.seed)
     #### Not work on windows
-    # dicts = os.getcwd()
-    # if dicts.split('/')[-1] == 'src':
-    #     dictName = '../solution/'
-    # else:
-    #     dictName = dictName + '/solution/'
+    dictName = os.getcwd()
+    if dictName.split('/')[-1] == 'code':
+        dictName = '../output/'
+    else:
+        dictName = dictName + '/output/'
+    dictName = dictName.replace('\\', '/')
     """ For my own test"""
-    dictName = 'D:/Desktop/CSE6140Project/solution/'
+    #dictName = 'D:/Desktop/CSE6140Project/solution/'
 
     """
     choose algorithm based on -alg
