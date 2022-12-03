@@ -1,6 +1,6 @@
 import heapq
 import time
-def minimum_vertex_cover_greedy(graph):
+def degree_greedy(graph):
     t0=time.time()
     G=graph
     nodes=[(d,n) for n,d in G.degree]
