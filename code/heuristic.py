@@ -1,6 +1,9 @@
 import heapq
 import time
 import networkx as nx
+#### The maximum degree greedy method implementation, will be imported to the main and got called.
+####
+####
 def Degree_Greedy(graph):  ###maximum degree greedy algo
     t0=time.time() ###start time
     G=graph
@@ -18,6 +21,7 @@ def Degree_Greedy(graph):  ###maximum degree greedy algo
     
     return solution,trace
 
+##### another edge deletion method, not used 
 def Two_Vertex(graph): #######approximate algo with approximation ratio of 2
     t0=time.time()
     G=graph
