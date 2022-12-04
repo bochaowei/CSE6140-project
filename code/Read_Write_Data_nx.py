@@ -2,6 +2,7 @@ import argparse
 import os
 """ Our code """
 from LS_SA import SimulatedAnnealing
+from LS_HC import HillClimbing
 import networkx as nx
 from heuristic import Degree_Greedy
 from BnB import BnB
@@ -98,6 +99,7 @@ if __name__ == "__main__":
         WriteFile(dictName, filename, num_best_solution, trace)
     elif args.algorithm == "LS2":
         filename += '_' + str(args.seed)
-        pass
+        num_best_solution, trace = HillClimbing(graph, args.time, args.seed)
+        WriteFile(dictName, filename, num_best_solution, trace)
     else:
         raise NameError("Please input correct algorithm name!")
