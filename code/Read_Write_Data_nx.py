@@ -3,7 +3,8 @@ import os
 """ Our code """
 from LS_SA import SimulatedAnnealing
 import networkx as nx
-from heuristics import Degree_Greedy
+from heuristic import Degree_Greedy
+from BnB import BnB
 
 def ReadFile(args):
     with open(args.filename, 'r') as file:
@@ -21,6 +22,7 @@ def ReadFile(args):
                         i = i.replace('\n', '')
                     graph.add_edge(node1, int(i))
             node1 += 1
+    nx.set_node_attributes(graph, 0, "include")
     return graph
 
 
@@ -85,7 +87,8 @@ if __name__ == "__main__":
     choose algorithm based on -alg
     """
     if args.algorithm == "BnB":
-        pass
+        num_best_solution, trace = BnB(graph, args.time)
+        WriteFile(dictName, filename, num_best_solution, trace)
     elif args.algorithm == "Approx":
         num_best_solution, trace =Degree_Greedy(graph)
         WriteFile(dictName, filename, num_best_solution, trace)
