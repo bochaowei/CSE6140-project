@@ -3,6 +3,7 @@ import os
 """ Our code """
 from LS_SA import SimulatedAnnealing
 import networkx as nx
+from heuristics import Degree_Greedy
 
 def ReadFile(args):
     with open(args.filename, 'r') as file:
@@ -86,7 +87,8 @@ if __name__ == "__main__":
     if args.algorithm == "BnB":
         pass
     elif args.algorithm == "Approx":
-        pass
+        num_best_solution, trace =Degree_Greedy(graph)
+        WriteFile(dictName, filename, num_best_solution, trace)
     elif args.algorithm == "LS1":
         filename += '_' + str(args.seed)
         num_best_solution, trace = SimulatedAnnealing(graph, args.time, args.seed)
