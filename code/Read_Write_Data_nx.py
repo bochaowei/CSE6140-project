@@ -6,6 +6,10 @@ from LS_HC import HillClimbing
 import networkx as nx
 from heuristic import Degree_Greedy
 from BnB import BnB
+### This is the main file need to be run. It will read the graph data and call other functions for calculation and write result to output
+##### 
+
+
 
 def ReadFile(args):
     with open(args.filename, 'r') as file:
