@@ -1,4 +1,5 @@
-This is for CSE6140 project: Minimum vertex cover
+This is for CSE6140 project: Minimum vertex cover. Each of our group members is in charge of implementing one of the four methods and write the corresponding parts in the report. 'BnB.py','heuristic.py', 'LS_HC' and 'LS-SA' are the modules for the four methods.
+The 'Read_Write_Data_nx.py' imported four modules, read the graph data and after running all functions, write the results to output.
 
 requirements:
 networkx
